@@ -1,0 +1,9 @@
+.element__signature {
+    height: calc(362px - 282px);
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-between;
+}

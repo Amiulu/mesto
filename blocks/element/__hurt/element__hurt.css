@@ -1,0 +1,15 @@
+.element__hurt {
+    background: url('../../../images/icon/hurt__vector.svg') no-repeat;
+    background-position: center;
+    width: 22px;
+    height: 19px;
+    padding: 0;
+    border: none;
+    margin-right: 15px;
+    box-sizing: border-box;
+}
+
+.element__hurt:hover {
+    opacity: .5;
+}
+

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mesto Russia</title>
+    <link rel="stylesheet" href="./pages/index.css">
+</head>
+<body class="page">
+    <header class="header page__header-position">
+        <img class="header__logo" src="./images/logo/logo__pc.svg" alt="Место логотип">
+        <div class="header__line"></div>
+    </header>
+    <main class="content page__content-position">
+        <section class="profile">
+            <article class="profile__place">
+                <img class="profile__avatar" src="./images/image__profile.jpg" alt="#">
+                <div class="profile__info">
+                    <div class="profile__top-line">
+                        <h1 class="profile__taitle">Жак-Ив Кусто</h1>
+                        <button class="profile__edit-button"></button>
+                    </div>
+                    <p class="profile__subtaitle">Исследователь океана</p>
+                </div>
+            </article>
+            <button class="profile__add-button">
+            </button>
+        </section>
+        <section class="elements content__elements-position">
+            <div class="element">
+                <img class="element__image" src="./images/Altay__place.jpg" alt="Алтай">
+                <div class="element__signature">
+                    <h2 class="element__sign">Алтайские просторы</h2>
+                    <button class="element__hurt"></button>
+                </div>
+            </div>
+            <div class="element">
+                <img class="element__image" src="./images/Karelia__place.jpg" alt="Карелия">
+                <div class="element__signature">
+                    <h2 class="element__sign">Карельская глушь</h2>
+                    <button class="element__hurt"></button>
+                </div>
+            </div>
+            <div class="element">
+                <img class="element__image" src="./images/Бизяр__village.jpg" alt="Деревня Бизяр">
+                <div class="element__signature">
+                    <h2 class="element__sign">Деревня Бизяр</h2>
+                    <button class="element__hurt"></button>
+                </div>
+            </div>
+            <div class="element">
+                <img class="element__image" src="./images/Baikal__place.jpg" alt="Берега Байкала">
+                <div class="element__signature">
+                    <h2 class="element__sign">Гора Шаманка</h2>
+                    <button class="element__hurt"></button>
+                </div>
+            </div>  
+            <div class="element">
+                <img class="element__image" src="./images/swamp of Nefteyugansk.jpg" alt="Болота Нефтеюганска">
+                <div class="element__signature">
+                    <h2 class="element__sign">Топи севера</h2>
+                    <button class="element__hurt"></button>
+                </div>
+            </div>
+            <div class="element">
+                <img class="element__image" src="./images/Vladivostok__place.jpg" alt="Владивосток">
+                <div class="element__signature">
+                    <h2 class="element__sign">Дикий восток</h2>
+                    <button class="element__hurt"></button>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="footer page__footer-position">
+        <h3 class="footer__copy">&#169; 2020 Mesto Russia</h3>
+    </footer>
+    <section class="popup">
+        <button class="popup__close-button"></button>
+        <form class="popup__container">
+            <h2 class="popup__title">Редактировать профиль</h2>
+            <input class="popup__subtitle" type="text" value="Жак-Ив Кусто">
+            <input  class='popup__subtitle-description' type="text" value="Исследователь океана">
+            <button class="popup__save-button"><p class="popup__save-text">Сохранить</p></button>
+        </form>
+    </section>
+    <script src="./vendor/index.js"></script>
+</body>
+</html>
