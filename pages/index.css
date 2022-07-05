@@ -9,18 +9,18 @@
 @import url('../blocks/header/__line/header__line.css');
 
 /* контент */
-@import url(../blocks/content/content.css);
-@import url(../blocks/page/__content-position/page__content-position.css);
+@import url('../blocks/content/content.css');
+@import url('../blocks/page/__content-position/page__content-position.css');
 
-@import url(../blocks/profile/profile.css);
-@import url(../blocks/profile/__place/profile__place.css);
-@import url(../blocks/profile/__avatar/profile__avatar.css);
-@import url(../blocks/profile/__info/profile__info.css);
-@import url(../blocks/profile/__top-line/profile__top-line.css);
-@import url(../blocks/profile/__taitle/profile__taitle.css);
-@import url(../blocks/profile/__subtaitle/profile__subtaitle.css);
-@import url(../blocks/profile/__edit-button/profile__edit-button.css);
-@import url(../blocks/profile/__add-button/profile__add-button.css);
+@import url('../blocks/profile/profile.css');
+@import url('../blocks/profile/__place/profile__place.css');
+@import url('../blocks/profile/__avatar/profile__avatar.css');
+@import url('../blocks/profile/__info/profile__info.css');
+@import url('../blocks/profile/__top-line/profile__top-line.css');
+@import url('../blocks/profile/__taitle/profile__taitle.css');
+@import url('../blocks/profile/__subtaitle/profile__subtaitle.css');
+@import url('../blocks/profile/__edit-button/profile__edit-button.css');
+@import url('../blocks/profile/__add-button/profile__add-button.css');
 
 @import url(../blocks/elements/elements.css);
 @import url(../blocks/content/__elements-position/content__elements-position.css);
