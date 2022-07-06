@@ -39,3 +39,4 @@ closePopup();
 }
 
 popupConteiner.addEventListener('submit', addTextSubtitle);
+buttonSavePopup.addEventListener('click', closePopupOverlay);
