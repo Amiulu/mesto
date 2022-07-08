@@ -8,11 +8,11 @@
     <link rel="stylesheet" href="./pages/index.css">
 </head>
 <body class="page">
-    <header class="header page__header-position">
+    <header class="header page__header">
         <img class="header__logo" src="./images/logo/logo__pc.svg" alt="Место логотип">
         <div class="header__line"></div>
     </header>
-    <main class="content page__content-position">
+    <main class="content page__content">
         <section class="profile">
             <article class="profile__place">
                 <img class="profile__avatar" src="./images/image__profile.jpg" alt="Аватар пользователя">
@@ -27,7 +27,7 @@
             <button class="profile__add-button">
             </button>
         </section>
-        <section class="elements content__elements-position">
+        <section class="elements content__elements">
             <div class="element">
                 <img class="element__image" src="./images/Altay__place.jpg" alt="Алтай">
                 <div class="element__signature">
@@ -72,18 +72,20 @@
             </div>
         </section>
     </main>
-    <footer class="footer page__footer-position">
-        <h3 class="footer__copy">&#169; 2020 Mesto Russia</h3>
+    <footer class="footer page__footer">
+        <p class="footer__copy">&#169; 2020 Mesto Russia</p>
     </footer>
-    <section class="popup">
-        <button class="popup__close-button"></button>
-        <form class="popup__container">
+    <div class="popup">
+        <div class="popup__container">
+            <button class="popup__close-button"></button>
             <h2 class="popup__title">Редактировать профиль</h2>
-            <input class="popup__subtitle" type="text" value="Жак-Ив Кусто">
-            <input  class='popup__subtitle-description' type="text" value="Исследователь океана">
-            <input type="button" class="popup__save-button" value="Сохранить">
-        </form>
-    </section>
-    <script src="./vendor/index.js"></script>
+                <form class="popup__form">
+                    <input class="popup__input popup__input_data_name" type="text" value="Жак-Ив Кусто">
+                    <input  class="popup__input popup__subtitle_data_description" type="text" value="Исследователь океана">
+                    <button type="submit" class="popup__save-button">Сохранить</button>
+                </form>
+         </div>
+    </div>
+    <script src="./scripts/index.js"></script>
 </body>
 </html>

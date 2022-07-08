@@ -1,4 +1,4 @@
-    .page {
+.page {
     max-width: 1280px;
     margin: 0 auto;
     background-color: #000;
@@ -8,7 +8,7 @@
     flex-direction: column;
     align-content: center;
     box-sizing: border-box;
-    font-family: 'Inter';
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
     -webkit-text-size-adjust: 100%;

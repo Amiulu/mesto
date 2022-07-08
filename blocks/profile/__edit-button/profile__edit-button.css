@@ -10,11 +10,10 @@
 
 @media screen  and (max-width: 645px) {
     .profile__edit-button {
-        background: url('../../../images/icon/pen__vector-mob.svg') no-repeat;
-        background-position: center;
         width: 18px;
         height: 18px;
         margin-left: 10px;
+        background-size: 8px 8px;
         }
     }
 

@@ -7,7 +7,7 @@
     padding: 0;
     position: absolute;
     left: calc(100% - ( 50% - 223px));
-    top: 155px;
+    top: -40px;
 }
 
 @media screen  and (max-width: 595px) {
@@ -16,7 +16,7 @@
         background-position: center;
         width: 20px;
         height: 20px;
-        top: 87px;
+        top: -36px;
         left: calc(100% - ( 50% - 121px));
         }
     }

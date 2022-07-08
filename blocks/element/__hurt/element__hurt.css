@@ -1,5 +1,6 @@
 .element__hurt {
-    background: url('../../../images/icon/hurt__vector.svg') no-repeat;
+    background: url('../../../images/icon/hurt__vector.svg');
+    background-repeat: no-repeat;
     background-position: center;
     width: 22px;
     height: 19px;
