@@ -27,4 +27,5 @@
 
 .popup__save-button:hover {
     background: rgba(0, 0, 0, .8);
+    cursor: pointer;
 }

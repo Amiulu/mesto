@@ -1,7 +1,7 @@
 .profile__top-line {
     max-width: 336px;
     display: flex;
-    align-items: baseline;
+    align-items: stretch;
     padding-bottom: 8px;
     margin: 0; 
 }

@@ -1,5 +1,6 @@
 const popupElement = document.querySelector('.popup');  
 const popupConteiner = popupElement.querySelector('.popup__container');
+const popupForm = popupElement.querySelector('.popup__form');
 const buttonClosePopup = popupElement.querySelector('.popup__close-button'); 
 const buttonOpenPopup = document.querySelector('.profile__edit-button');
 const buttonSavePopup = popupElement.querySelector('.popup__save-button');
@@ -14,15 +15,15 @@ let activeHurt = document.querySelectorAll('.element__hurt').forEach (activeHurt
         activeHurt.classList.toggle('element__hurt_active');
     });
 }); */
-
-buttonOpenPopup.addEventListener('click', function() {
-    popupElement.classList.add('popup_status_open');
+const openPopup = function() {
+    popupElement.classList.add('popup_status-open');
     nameInput.value = title.textContent;
     description.value = subtitle.textContent;
-});
+};
+buttonOpenPopup.addEventListener('click', openPopup);
 
 const closePopup = function () {
-    popupElement.classList.remove('popup_status_open');
+    popupElement.classList.remove('popup_status-open');
 }
 buttonClosePopup.addEventListener('click', closePopup);
 
@@ -33,5 +34,4 @@ function addTextSubtitle(evt){
 closePopup();
 }
 
-popupConteiner.addEventListener('submit', addTextSubtitle);
-buttonSavePopup.addEventListener('click', closePopupOverlay);
+popupForm.addEventListener('submit', addTextSubtitle);
