@@ -16,14 +16,14 @@ let activeHurt = document.querySelectorAll('.element__hurt').forEach (activeHurt
     });
 }); */
 const openPopup = function() {
-    popupElement.classList.add('popup_status-open');
+    popupElement.classList.add('popup_open');
     nameInput.value = title.textContent;
     description.value = subtitle.textContent;
 };
 buttonOpenPopup.addEventListener('click', openPopup);
 
 const closePopup = function () {
-    popupElement.classList.remove('popup_status-open');
+    popupElement.classList.remove('popup_open');
 }
 buttonClosePopup.addEventListener('click', closePopup);
 
