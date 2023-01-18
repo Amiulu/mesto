@@ -1,0 +1,27 @@
+.popup__close-fullscreen {
+    width: 20px;
+    height: 20px;
+    margin-bottom: 16px;
+    border: 0;
+    background-image: url(../../../images/icon/close__vector.svg);
+    background-repeat: no-repeat;
+    background-color: transparent;
+    position: absolute;
+    right: 0;
+    top: -35px;
+}
+
+.popup__close-fullscreen:hover {
+    opacity: 0.6;
+    cursor: pointer;
+}
+
+@media screen and (min-width: 595px) {
+.popup__close-fullscreen {
+      width: 32px;
+      height: 32px;
+      background-image: url(../../../images/icon/close__vector-mob.svg);
+      top: -40px;
+      right: -40px;
+    }
+}

@@ -27,6 +27,7 @@
 @import url('../blocks/element/element.css');
 @import url('../blocks/element/__image/element__image.css');
 @import url('../blocks/element/__signature/element__signature.css');
+@import url('../blocks/element/__trash/element__trash.css');
 @import url('../blocks/element/__sign/element__sign.css');
 @import url('../blocks/element/__hurt/element__hurt.css');
 @import url('../blocks/element/__hurt/_active/element__hurt_active.css');
@@ -39,6 +40,14 @@
 @import url('../blocks/popup/__save-button/popup__save-button.css');
 @import url('../blocks/popup/_open/popup_open.css');
 @import url('../blocks/popup/__form/popup__form.css');
+
+/* fullscreen */
+@import url('../blocks/photo-fullscreen/photo-fullscreen.css');
+@import url('../blocks/popup/__container-fullscreen/popup__container-fullscreen.css');
+@import url('../blocks/popup/__image-fullscreen/popup__image-fullscreen.css');
+@import url('../blocks/popup/__title-fullscreen/popup__title-fullscreen.css');
+@import url('../blocks/popup/__close-fullscreen/popup__close-fullscreen.css');
+
 
 /* подвал */
 @import url('../blocks/footer/footer.css');
