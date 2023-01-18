@@ -4,7 +4,8 @@ const popupAdd = document.querySelector('.popup_add');
 
 //poup form
 const popupConteiner = popupElement.querySelector('.popup__container');
-const popupForm = popupAdd.querySelector('.popup__form');
+const popupForm = popupElement.querySelector('.popup__form');
+const popupFormAdd = popupAdd.querySelector('.popup__form-add')
 
 //button const
 const buttonClosePopup = popupElement.querySelector('.popup__close-button'); 
@@ -72,8 +73,10 @@ const closePopup = function () {
 buttonClosePopup.addEventListener('click', closePopup);
 function addTextSubtitle(evt){
     evt.preventDefault();
-    title.textContent = nameInput.value;
-    subtitle.textContent = descriptionInput.value;
+    const nameInput = popupElement.querySelector('.popup__input_data_name').value;
+    const descriptionInput = popupElement.querySelector('.popup__input_data_description').value;
+    title.textContent = nameInput;
+    subtitle.textContent = descriptionInput;
 closePopup();
 }
 
@@ -107,17 +110,13 @@ const initialCards = [
     }
   ];
 //закрытие попапа добавления картинки
- const closePopupAdd = function () {
+popupAddClouseButton.addEventListener('click', () => {
     popupAdd.classList.remove('popup_open');
-}
+});
 //открытие попап добавления картинки
-function openPopupAdd() {
+buttonAdd.addEventListener('click', () => {
     popupAdd.classList.add('popup_open'); 
-}
-
-popupAddClouseButton.addEventListener('click', closePopupAdd);
-buttonAdd.addEventListener('click', openPopupAdd);
-
+});
 
 // Функция создания карточки + взаимодействие с созданнной картой 
 function createCard(item) {
@@ -163,7 +162,7 @@ function renderCards(){
 renderCards();
 
 //отправка формы
-popupForm.addEventListener('submit', function (event) {
+popupFormAdd.addEventListener('submit', function (event) {
     event.preventDefault();
     const placeInput = popupAdd.querySelector('.popup__input_data_place').value;
     const imageInput = popupAdd.querySelector('.popup__input_data_image').value;

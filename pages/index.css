@@ -40,6 +40,7 @@
 @import url('../blocks/popup/__save-button/popup__save-button.css');
 @import url('../blocks/popup/_open/popup_open.css');
 @import url('../blocks/popup/__form/popup__form.css');
+@import url('../blocks/popup/__form-add/popup__form-add.css');
 
 /* fullscreen */
 @import url('../blocks/photo-fullscreen/photo-fullscreen.css');
