@@ -1,6 +1,7 @@
 //popup
 const popupElement = document.querySelector('.popup');  
-const popupAdd = document.querySelector('.popup_add');
+const popupAdd = document.querySelector('.popup_type_add');
+const fullscreenPopup = document.querySelector('.popup_type_photo-fullscreen');
 
 //poup form
 const popupConteiner = popupElement.querySelector('.popup__container');
@@ -15,11 +16,14 @@ const buttonHurt = document.querySelectorAll('.element__hurt');
 const buttonAdd = document.querySelector('.profile__add-button');
 const popupAddClouseButton = popupAdd.querySelector('.popup__close-button_add');
 const popupAddButton = popupAdd.querySelector('.popup__add-button');
+const clouseButttonFullsreen = fullscreenPopup.querySelector('.popup__close-fullscreen');
 
 
 //input const
 const nameInput = popupElement.querySelector('.popup__input_data_name');
 const descriptionInput = popupElement.querySelector('.popup__input_data_description');
+const placeInput = popupAdd.querySelector('.popup__input_data_place');
+const imageInput = popupAdd.querySelector('.popup__input_data_image');
 
 
 //Others
@@ -29,13 +33,12 @@ const moreCard = document.querySelector('.elements');
 const cardTemplate = document.querySelector('.card-template')
 .content
 .querySelector('.element');
+const fullscreenPicture = fullscreenPopup.querySelector('.popup__image-fullscreen');
+const fullscreenName = fullscreenPopup.querySelector('.popup__title-fullscreen');
 
 
 /*открываем себя 
-Добрый день дорогой проверяющий, я знаю что код ниже похож на деревенский туалет (дыра в полу), но для меня это большой 
-прорыв в понимании логики работы и понимания взаимодействия. Так уж получилось что в связи со всеми событиями на меня навалилось много работы,
-и с последнего ревью у меня прошло пол года, очень прошу вас писать подробнее как можно исправить существующие ошибки или улучшить код.
-Приходится востанавливать все полученные знания заново, спасибо вам за работу!
+Евгений спасибо за ваши комментарии!
 
 
  Попап с профилем открытие */
@@ -136,21 +139,19 @@ function createCard(item) {
         trashButton.addEventListener('click', function( event ) {
             event.target.closest('.element').remove();
         })
-// открытие-закртие фулл скрина 
-        const fullscreenPopup = document.querySelector('.photo-fullscreen');
-        const fullscreenPicture = fullscreenPopup.querySelector('.popup__image-fullscreen');
-        const fullscreenName = fullscreenPopup.querySelector('.popup__title-fullscreen');
-        const clouseButttonFullsreen = fullscreenPopup.querySelector('.popup__close-fullscreen');
-        cardPath.addEventListener('click', function () {
+// открытие-закртие фулл скрина присвоение значений
+    cardPath.addEventListener('click', function () {
     fullscreenPopup.classList.add('popup_open');
     fullscreenPicture.src = item.link;
     fullscreenName.textContent = item.name;
 });
-    clouseButttonFullsreen.addEventListener('click', () => {
-        fullscreenPopup.classList.remove('popup_open')
-        })
     return oneCard;
 };
+//Слушатель закрытия фулскрина вынесен за границы создания карточек 
+function clouseFullscreen() {
+        fullscreenPopup.classList.remove('popup_open')
+        }
+clouseButttonFullsreen.addEventListener('click', clouseFullscreen);
 
 // Функция перебора массива карточек
 function renderCards(){
@@ -164,11 +165,9 @@ renderCards();
 //отправка формы
 popupFormAdd.addEventListener('submit', function (event) {
     event.preventDefault();
-    const placeInput = popupAdd.querySelector('.popup__input_data_place').value;
-    const imageInput = popupAdd.querySelector('.popup__input_data_image').value;
     const newCard = {
-        name: placeInput ,
-        link: imageInput
+        name: placeInput.value,
+        link: imageInput.value
     }
     moreCard.prepend(createCard(newCard));
     closePopupAdd()
