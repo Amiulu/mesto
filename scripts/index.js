@@ -1,5 +1,6 @@
 //popup
-const popupElement = document.querySelector('.popup');  
+const popupElement = document.querySelector('.popup');
+const popupProfiel = document.querySelector('.popup_type_profiel')
 const popupAdd = document.querySelector('.popup_type_add');
 const fullscreenPopup = document.querySelector('.popup_type_photo-fullscreen');
 
@@ -9,7 +10,7 @@ const popupForm = popupElement.querySelector('.popup__form');
 const popupFormAdd = popupAdd.querySelector('.popup__form-add')
 
 //button const
-const buttonClosePopup = popupElement.querySelector('.popup__close-button'); 
+const buttonClosePopup = popupProfiel.querySelector('.popup__close-button'); 
 const buttonOpenPopup = document.querySelector('.profile__edit-button');
 const submitAddPopup = popupElement.querySelector('.popup__save-button');
 const buttonHurt = document.querySelectorAll('.element__hurt');
@@ -36,89 +37,64 @@ const cardTemplate = document.querySelector('.card-template')
 const fullscreenPicture = fullscreenPopup.querySelector('.popup__image-fullscreen');
 const fullscreenName = fullscreenPopup.querySelector('.popup__title-fullscreen');
 
+//константа для поиска всех попапов
+const popupList = Array.from(document.querySelectorAll('.popup'))
 
-/*открываем себя 
-Евгений спасибо за ваши комментарии!
+//открываем себя 
+//Евгений спасибо за ваши комментарии!
 
+function openPopupAll (popup) {
+  popup.classList.add('popup_open');
+  document.addEventListener('keydown', closePopupEsc);
+}
 
- Попап с профилем открытие */
-const openPopup = function() {
-    popupElement.classList.add('popup_open');
-    document.addEventListener('keydown', ClosePopupEsc);
-    popupElement.addEventListener('click', ClosePopupOverlay);
-    nameInput.value = title.textContent;
-    descriptionInput.value = subtitle.textContent;
-};
+//закрытие попапа кликом на оверлей
+popupList.forEach((popup) => { // итерируем массив. объявляя каждый попап в переменную popup
+    popup.addEventListener('mouseup', (event) => { // на каждый попап устанавливаем слушателя события
+      const targetClassList = event.target.classList; // запишем в переменную класс элемента, на котором произошло событие
+      if (targetClassList.contains('popup') || targetClassList.contains('popup__close-button')) { // проверяем наличие класса попапа ИЛИ кнопки закрытия
+        closePopup(popup); // если один из классов присутствует, то закрываем попап
+      }
+    })
+  })
 
 // Функция закрытия попапа через Esc
-function ClosePopupEsc(evt) {
+function closePopupEsc(evt) {
     if (evt.key === 'Escape') {
       const openedPopup = document.querySelector('.popup_open');
       closePopup(openedPopup);
     }
   }
-// Функция закрытия попапа кликом на оверлей
-  function ClosePopupOverlay(evt) {
-    if (evt.target === evt.currentTarget) {
-      closePopup(evt.target);
-    }
-  }
 
 /* Попап с профилем закрытие */
-buttonOpenPopup.addEventListener('click', openPopup);
-const closePopup = function () {
-    popupElement.classList.remove('popup_open');
-    document.removeEventListener('keydown', ClosePopupEsc);
-    popupElement.removeEventListener('click', ClosePopupOverlay);
+ function closePopup (popupClouse) {
+    popupClouse.classList.remove('popup_open');
 }
 
+buttonOpenPopup.addEventListener('click', (event) => {
+  openPopupAll(popupProfiel)
+});
+
+buttonClosePopup.addEventListener('click', (event) => { 
+  closePopup(popupProfiel)
+});
 /* Редактирование текста профиля */
-buttonClosePopup.addEventListener('click', closePopup);
 function addTextSubtitle(evt){
     evt.preventDefault();
-    const nameInput = popupElement.querySelector('.popup__input_data_name').value;
-    const descriptionInput = popupElement.querySelector('.popup__input_data_description').value;
-    title.textContent = nameInput;
-    subtitle.textContent = descriptionInput;
-closePopup();
+    title.textContent = nameInput.value;
+    subtitle.textContent = descriptionInput.value;
+    closePopup (popupProfiel);
 }
-
 popupForm.addEventListener('submit', addTextSubtitle);
 
-/* работа с массивом карточек ------------------------------*/
-const initialCards = [
-    {
-      name: 'Алтайские просторы',
-      link: 'https://images.unsplash.com/photo-1662503792746-2e1d3af41b7d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1992&q=80'
-    },
-    {
-      name: 'Карельская глушь',
-      link: 'https://images.unsplash.com/photo-1673646384080-0dd8da7edf2b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80'
-    },
-    {
-      name: 'Деревня Бизяр',
-      link: 'https://images.unsplash.com/photo-1599140182177-45d2184c4844?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80'
-    },
-    {
-      name: 'Гора Шаманка',
-      link: 'https://images.unsplash.com/photo-1605639743310-db006cc1b95a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80'
-    },
-    {
-      name: 'Топи севера',
-      link: 'https://images.unsplash.com/photo-1623430618732-6df749201127?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80'
-    },
-    {
-      name: 'Дикий восток',
-      link: 'https://images.unsplash.com/photo-1567687311355-9280c6bc4b0d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80'
-    }
-  ];
+
 //закрытие попапа добавления картинки
-popupAddClouseButton.addEventListener('click', () => {
-    popupAdd.classList.remove('popup_open');
+popupAddClouseButton.addEventListener('click', (event) => {
+  closePopup(popupAdd);
 });
 //открытие попап добавления картинки
-buttonAdd.addEventListener('click', () => {
-    popupAdd.classList.add('popup_open'); 
+buttonAdd.addEventListener('click', (event) => {
+  openPopupAll(popupAdd); 
 });
 
 // Функция создания карточки + взаимодействие с созданнной картой 
@@ -140,18 +116,17 @@ function createCard(item) {
             event.target.closest('.element').remove();
         })
 // открытие-закртие фулл скрина присвоение значений
-    cardPath.addEventListener('click', function () {
-    fullscreenPopup.classList.add('popup_open');
+    cardPath.addEventListener('click', (event) => {
+    openPopupAll(fullscreenPopup);
     fullscreenPicture.src = item.link;
     fullscreenName.textContent = item.name;
 });
     return oneCard;
 };
 //Слушатель закрытия фулскрина вынесен за границы создания карточек 
-function clouseFullscreen() {
-        fullscreenPopup.classList.remove('popup_open')
-        }
-clouseButttonFullsreen.addEventListener('click', clouseFullscreen);
+clouseButttonFullsreen.addEventListener('click', (event) => {
+  closePopup(fullscreenPopup);
+});
 
 // Функция перебора массива карточек
 function renderCards(){
