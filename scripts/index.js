@@ -40,9 +40,6 @@ const fullscreenName = fullscreenPopup.querySelector('.popup__title-fullscreen')
 //константа для поиска всех попапов
 const popupList = Array.from(document.querySelectorAll('.popup'))
 
-//открываем себя 
-//Евгений спасибо за ваши комментарии!
-
 function openPopupAll (popup) {
   popup.classList.add('popup_open');
   document.addEventListener('keydown', closePopupEsc);

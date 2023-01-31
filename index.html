@@ -36,9 +36,11 @@
         <div class="popup__container">
             <button type="button" class="popup__close-button"></button>
             <h2 class="popup__title">Редактировать профиль</h2>
-                <form name="popupСhange" class="popup__form">
-                    <input name="name" class="popup__input popup__input_data_name" type="text" value="Жак-Ив Кусто">
-                    <input name="description" class="popup__input popup__input_data_description" type="text" value="Исследователь океана">
+                <form name="popupСhange" class="popup__form" novalidate>
+                        <input id="dataName" name="name"  minlength='2' maxlength='40' class="popup__input popup__input_data_name" type="text" value="Жак-Ив Кусто" required>
+                        <span class="popup__input-error dataName-error"></span>
+                        <input id="dataDescription" name="description"  minlength='2' maxlength='200'  class="popup__input popup__input_data_description" type="text" value="Исследователь океана" required>
+                        <span class="popup__input-error dataDescription-error"></span>
                     <button type="submit" class="popup__save-button">Сохранить</button>
                 </form>
          </div>
@@ -47,9 +49,11 @@
         <div class="popup__container">
             <button type="button" class="popup__close-button popup__close-button_add"></button>
             <h2 class="popup__title">Новое место</h2>
-                <form name="popupСhange" class="popup__form-add">
-                    <input name="place" class="popup__input popup__input_data_place" type="text" value="Название">
-                    <input name="image" class="popup__input popup__input_data_image" type="text" value="Ссылка на картинку">
+                <form name="popupСhange" class="popup__form popup__form-add" novalidate>
+                        <input id="dataPlace" name="place"  minlength='2' maxlength='30' class="popup__input popup__input_data_place" type="text" value="Название" required>
+                        <span class="popup__input-error dataPlace-error"></span>
+                        <input id="dataImage" name="image" class="popup__input popup__input_data_image" type="url" value="Ссылка на картинку" required>
+                        <span class="popup__input-error dataImage-error"></span>
                     <button type="submit" class="popup__save-button popup__add-button">Сохранить</button>
                 </form>
          </div>
@@ -71,6 +75,7 @@
             </div>
         </div>
     </template>
+    <script src="./scripts/inputValidate.js"></script>
     <script src="./scripts/cards.js"></script>
     <script src="./scripts/index.js"></script>
 </body>
