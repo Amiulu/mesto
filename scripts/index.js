@@ -114,9 +114,10 @@ function createCard(item) {
         })
 // открытие-закртие фулл скрина присвоение значений
     cardPath.addEventListener('click', (event) => {
-    openPopupAll(fullscreenPopup);
     fullscreenPicture.src = item.link;
+    fullscreenPicture.alt = item.name;
     fullscreenName.textContent = item.name;
+    openPopupAll(fullscreenPopup);
 });
     return oneCard;
 };

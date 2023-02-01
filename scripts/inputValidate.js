@@ -1,55 +1,58 @@
-const showInputError = (formElement, inputElement, errorMessage) => {
-    const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-    inputElement.classList.add('popup__input_type_error');
-    errorElement.textContent = errorMessage;
-    errorElement.classList.add('popup__input-error-active');
+const settingsInput = {
+  form: '.popup__form',
+  input: '.popup__input',
+  saveButton: '.popup__save-button',
+  saveButtonInactive: '.popup__save-button_inactive',
+  inputTypeError: '.popup__input_type_error',
+  inputErrorActive: '.popup__input-error-active'
 };
 
-//открываем себя 
-//Доброго дня дорогой проверяющий, спасибо вам за вашу работу <З в процессе выполнения работы  возникло несколько вопросов, 
-//никак не могу разобраться с нижним подчеркивание красного цвета в инспекторе класс popup__input просто перекрывает сам себя 
-// и присвоенный ему класс для стилизации нижнего подчеркивания в функции showInputError. Сделала пока грубейший костыль, но 
-// вижу что результат плохой. 
-
-const hideInputError = (formElement, inputElement) => {
+const showInputError = (formElement, inputElement, settingsInput) => {
     const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-    inputElement.classList.remove('popup__input_type_error');
-    errorElement.classList.remove('popup__input-error-active');
+    inputElement.classList.add(settingsInput.inputTypeError);
+    errorElement.textContent = inputElement.validationMessage;
+    errorElement.classList.add(settingsInput.inputErrorActive);
+};
+
+const hideInputError = (formElement, inputElement, settingsInput) => {
+    const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
+    inputElement.classList.remove(settingsInput.inputTypeError);
+    errorElement.classList.remove(settingsInput.inputErrorActive);
     errorElement.textContent = '';
 };
 
-const isValid = (formElement, inputElement) => {
+const isValid = (formElement, inputElement, settingsInput) => {
     if (!inputElement.validity.valid) {
-      showInputError(formElement, inputElement, inputElement.validationMessage);
+      showInputError(formElement, inputElement, settingsInput);
     } else {
-      hideInputError(formElement, inputElement);
+      hideInputError(formElement, inputElement, settingsInput);
     }
   }; 
 
-const setEventListeners = (formElement) => {
-    const inputList = Array.from(formElement.querySelectorAll('.popup__input'));
-    const buttonElement = formElement.querySelector('.popup__save-button');
-    toggleButtonState(inputList, buttonElement);
+const setEventListeners = (formElement, settingsInput) => {
+    const inputList = Array.from(formElement.querySelectorAll(settingsInput.input));
+    const buttonElement = formElement.querySelector(settingsInput.saveButton);
+    toggleButtonState(inputList, buttonElement, settingsInput);
 
     inputList.forEach((inputElement) => {
       inputElement.addEventListener('input', () => {
-        isValid(formElement, inputElement);
-        toggleButtonState(inputList, buttonElement);
+        isValid(formElement, inputElement, settingsInput);
+        toggleButtonState(inputList, buttonElement, settingsInput);
       });
     });
   };
 
-  const enableValidation = () => {
-    const formList = Array.from(document.querySelectorAll('.popup__form'));
+  const enableValidation = (settingsInput) => {
+    const formList = Array.from(document.querySelectorAll(settingsInput.form));
     formList.forEach((formElement) => {
         formElement.addEventListener('submit', (evt) => {
             evt.preventDefault();
           });
-      setEventListeners(formElement);
+      setEventListeners(formElement, settingsInput);
     });
   };
 
-  enableValidation(); 
+  enableValidation(settingsInput); 
   function hasInvalidInput (inputList) {
     return inputList.some((inputElement) => {
       return !inputElement.validity.valid;
@@ -57,12 +60,12 @@ const setEventListeners = (formElement) => {
   }; 
   
 
-  function toggleButtonState (inputList, buttonElement)  {
+  function toggleButtonState (inputList, buttonElement, settingsInput)  {
     if (hasInvalidInput(inputList)) {
-      buttonElement.classList.add('popup__save-button_inactive');
+      buttonElement.classList.add(settingsInput.saveButtonInactive);
       buttonElement.disabled = true;
     } else {
-      buttonElement.classList.remove('popup__save-button_inactive');
+      buttonElement.classList.remove(settingsInput.saveButtonInactive);
       buttonElement.disabled = false;
     }
   }; 
