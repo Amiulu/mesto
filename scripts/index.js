@@ -143,6 +143,6 @@ popupFormAdd.addEventListener('submit', function (event) {
         link: imageInput.value
     }
     moreCard.prepend(createCard(newCard));
-    closePopupAdd()
-    popupForm.reset(); 
+    closePopup(popupAdd)
+    popupFormAdd.reset(); 
 });

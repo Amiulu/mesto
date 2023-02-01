@@ -2,9 +2,9 @@ const settingsInput = {
   form: '.popup__form',
   input: '.popup__input',
   saveButton: '.popup__save-button',
-  saveButtonInactive: '.popup__save-button_inactive',
-  inputTypeError: '.popup__input_type_error',
-  inputErrorActive: '.popup__input-error-active'
+  saveButtonInactive: 'popup__save-button_inactive',
+  inputTypeError: 'popup__input_type_error',
+  inputErrorActive: 'popup__input-error-active'
 };
 
 const showInputError = (formElement, inputElement, settingsInput) => {
