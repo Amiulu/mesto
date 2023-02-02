@@ -1,8 +1,10 @@
+//Спасибо за уделенное время и оставленные комментарии!
+
 //popup
 const popupElement = document.querySelector('.popup');
 const popupProfiel = document.querySelector('.popup_type_profiel')
 const popupAdd = document.querySelector('.popup_type_add');
-const fullscreenPopup = document.querySelector('.popup_type_photo-fullscreen');
+const popupFullscreen = document.querySelector('.popup_type_photo-fullscreen');
 
 //poup form
 const popupConteiner = popupElement.querySelector('.popup__container');
@@ -15,16 +17,15 @@ const buttonOpenPopup = document.querySelector('.profile__edit-button');
 const submitAddPopup = popupElement.querySelector('.popup__save-button');
 const buttonHurt = document.querySelectorAll('.element__hurt');
 const buttonAdd = document.querySelector('.profile__add-button');
-const popupAddClouseButton = popupAdd.querySelector('.popup__close-button_add');
-const popupAddButton = popupAdd.querySelector('.popup__add-button');
-const clouseButttonFullsreen = fullscreenPopup.querySelector('.popup__close-fullscreen');
+const popupAddButtonClouse = popupAdd.querySelector('.popup__close-button_add');
+const buttonClosePopupImage = popupFullscreen.querySelector('.popup__close-fullscreen');
 
 
 //input const
-const nameInput = popupElement.querySelector('.popup__input_data_name');
-const descriptionInput = popupElement.querySelector('.popup__input_data_description');
-const placeInput = popupAdd.querySelector('.popup__input_data_place');
-const imageInput = popupAdd.querySelector('.popup__input_data_image');
+const popupInputName = popupElement.querySelector('.popup__input_data_name');
+const popupInputDescription = popupElement.querySelector('.popup__input_data_description');
+const popupInputPlace= popupAdd.querySelector('.popup__input_data_place');
+const popupInputImage = popupAdd.querySelector('.popup__input_data_image');
 
 
 //Others
@@ -34,16 +35,18 @@ const moreCard = document.querySelector('.elements');
 const cardTemplate = document.querySelector('.card-template')
 .content
 .querySelector('.element');
-const fullscreenPicture = fullscreenPopup.querySelector('.popup__image-fullscreen');
-const fullscreenName = fullscreenPopup.querySelector('.popup__title-fullscreen');
+const pictureAssignImageCard= popupFullscreen.querySelector('.popup__image-fullscreen');
+const pictureAssignPlaceCard= popupFullscreen.querySelector('.popup__title-fullscreen');
 
 //константа для поиска всех попапов
 const popupList = Array.from(document.querySelectorAll('.popup'))
 
 function openPopupAll (popup) {
   popup.classList.add('popup_open');
-  document.addEventListener('keydown', closePopupEsc);
 }
+
+//Вместо удаления вызываемого слушателя в функции использую подход делегирования вешаю слушатель на документ
+document.addEventListener('keydown', closePopupEsc);
 
 //закрытие попапа кликом на оверлей
 popupList.forEach((popup) => { // итерируем массив. объявляя каждый попап в переменную popup
@@ -78,17 +81,18 @@ buttonClosePopup.addEventListener('click', (event) => {
 /* Редактирование текста профиля */
 function addTextSubtitle(evt){
     evt.preventDefault();
-    title.textContent = nameInput.value;
-    subtitle.textContent = descriptionInput.value;
+    title.textContent = popupInputName.value;
+    subtitle.textContent = popupInputDescription.value;
     closePopup (popupProfiel);
 }
 popupForm.addEventListener('submit', addTextSubtitle);
 
 
 //закрытие попапа добавления картинки
-popupAddClouseButton.addEventListener('click', (event) => {
+popupAddButtonClouse.addEventListener('click', (event) => {
   closePopup(popupAdd);
 });
+
 //открытие попап добавления картинки
 buttonAdd.addEventListener('click', (event) => {
   openPopupAll(popupAdd); 
@@ -114,16 +118,16 @@ function createCard(item) {
         })
 // открытие-закртие фулл скрина присвоение значений
     cardPath.addEventListener('click', (event) => {
-    fullscreenPicture.src = item.link;
-    fullscreenPicture.alt = item.name;
-    fullscreenName.textContent = item.name;
-    openPopupAll(fullscreenPopup);
+    pictureAssignImageCard.src = item.link;
+    pictureAssignImageCard.alt = item.name;
+    pictureAssignPlaceCard.textContent = item.name;
+    openPopupAll(popupFullscreen);
 });
     return oneCard;
 };
 //Слушатель закрытия фулскрина вынесен за границы создания карточек 
-clouseButttonFullsreen.addEventListener('click', (event) => {
-  closePopup(fullscreenPopup);
+buttonClosePopupImage.addEventListener('click', (event) => {
+  closePopup(popupFullscreen);
 });
 
 // Функция перебора массива карточек
@@ -139,8 +143,8 @@ renderCards();
 popupFormAdd.addEventListener('submit', function (event) {
     event.preventDefault();
     const newCard = {
-        name: placeInput.value,
-        link: imageInput.value
+        name: popupInputPlace.value,
+        link: popupInputImage.value
     }
     moreCard.prepend(createCard(newCard));
     closePopup(popupAdd)
