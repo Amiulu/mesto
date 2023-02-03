@@ -37,9 +37,9 @@
             <button type="button" class="popup__close-button"></button>
             <h2 class="popup__title">Редактировать профиль</h2>
                 <form name="popupСhange" class="popup__form" novalidate>
-                        <input id="dataName" name="name"  minlength='2' maxlength='40' class="popup__input popup__input_data_name" type="text" value="Жак-Ив Кусто" required>
+                        <input id="dataName" name="name"  minlength='2' maxlength='40' class="popup__input popup__input_data_name"  placeholder="Имя" type="text" value="Жак-Ив Кусто" required>
                         <span class="popup__input-error dataName-error"></span>
-                        <input id="dataDescription" name="description"  minlength='2' maxlength='200'  class="popup__input popup__input_data_description" type="text" value="Исследователь океана" required>
+                        <input id="dataDescription" name="description"  minlength='2' maxlength='200'  class="popup__input popup__input_data_description" placeholder="О себе" type="text" value="Исследователь океана" required>
                         <span class="popup__input-error dataDescription-error"></span>
                     <button type="submit" class="popup__save-button">Сохранить</button>
                 </form>
@@ -50,9 +50,9 @@
             <button type="button" class="popup__close-button popup__close-button_add"></button>
             <h2 class="popup__title">Новое место</h2>
                 <form name="popupСhange" class="popup__form popup__form-add" novalidate>
-                        <input id="dataPlace" name="place"  minlength='2' maxlength='30' class="popup__input popup__input_data_place" type="text" value="Название" required>
+                        <input id="dataPlace" name="place"  minlength='2' maxlength='30' class="popup__input popup__input_data_place" type="text" placeholder="Название" required>
                         <span class="popup__input-error dataPlace-error"></span>
-                        <input id="dataImage" name="image" class="popup__input popup__input_data_image" type="url" value="Ссылка на картинку" required>
+                        <input id="dataImage" name="image" class="popup__input popup__input_data_image" type="url" placeholder="Ссылка на картинку" required>
                         <span class="popup__input-error dataImage-error"></span>
                     <button type="submit" class="popup__save-button popup__add-button">Сохранить</button>
                 </form>

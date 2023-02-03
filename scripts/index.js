@@ -35,8 +35,8 @@ const moreCard = document.querySelector('.elements');
 const cardTemplate = document.querySelector('.card-template')
 .content
 .querySelector('.element');
-const pictureAssignImageCard= popupFullscreen.querySelector('.popup__image-fullscreen');
-const pictureAssignPlaceCard= popupFullscreen.querySelector('.popup__title-fullscreen');
+const pictureAssignImageCard = popupFullscreen.querySelector('.popup__image-fullscreen');
+const pictureAssignPlaceCard = popupFullscreen.querySelector('.popup__title-fullscreen');
 
 //константа для поиска всех попапов
 const popupList = Array.from(document.querySelectorAll('.popup'))
