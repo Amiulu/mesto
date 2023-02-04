@@ -66,7 +66,7 @@ function closePopupEsc(evt) {
 
 /* Попап с профилем закрытие */
  function closePopup (popupClouse) {
-    document.removeEventListener('keyup', closePopupEsc); 
+    document.removeEventListener('keydown', closePopupEsc); 
     popupClouse.classList.remove('popup_open');
 }
 
