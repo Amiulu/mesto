@@ -43,10 +43,8 @@ const popupList = Array.from(document.querySelectorAll('.popup'))
 
 function openPopupAll (popup) {
   popup.classList.add('popup_open');
+  document.addEventListener('keydown', closePopupEsc);
 }
-
-//Вместо удаления вызываемого слушателя в функции использую подход делегирования вешаю слушатель на документ
-document.addEventListener('keydown', closePopupEsc);
 
 //закрытие попапа кликом на оверлей
 popupList.forEach((popup) => { // итерируем массив. объявляя каждый попап в переменную popup
@@ -68,6 +66,7 @@ function closePopupEsc(evt) {
 
 /* Попап с профилем закрытие */
  function closePopup (popupClouse) {
+    document.removeEventListener('keyup', closePopupEsc); 
     popupClouse.classList.remove('popup_open');
 }
 
