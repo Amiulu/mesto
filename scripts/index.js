@@ -1,4 +1,6 @@
-//Спасибо за уделенное время и оставленные комментарии!
+import Card from "./card.js";
+import { initialCards } from "./cards.js";
+import FormValidator from "./inputValidate.js";
 
 //popup
 const popupElement = document.querySelector('.popup');
@@ -38,6 +40,15 @@ const cardTemplate = document.querySelector('.card-template')
 const pictureAssignImageCard = popupFullscreen.querySelector('.popup__image-fullscreen');
 const pictureAssignPlaceCard = popupFullscreen.querySelector('.popup__title-fullscreen');
 
+const settingsInput = {
+  form: '.popup__form',
+  input: '.popup__input',
+  saveButton: '.popup__save-button',
+  saveButtonInactive: 'popup__save-button_inactive',
+  inputTypeError: 'popup__input_type_error',
+  inputErrorActive: 'popup__input-error-active'
+};
+
 //константа для поиска всех попапов
 const popupList = Array.from(document.querySelectorAll('.popup'))
 
@@ -66,7 +77,7 @@ function closePopupEsc(evt) {
 
 /* Попап с профилем закрытие */
  function closePopup (popupClouse) {
-    document.removeEventListener('keydown', closePopupEsc); 
+    document.removeEventListener('keydown', closePopupEsc);  // удаляй ненужные слушатели
     popupClouse.classList.remove('popup_open');
 }
 
@@ -97,55 +108,46 @@ buttonAdd.addEventListener('click', (event) => {
   openPopupAll(popupAdd); 
 });
 
-// Функция создания карточки + взаимодействие с созданнной картой 
 function createCard(item) {
-    const oneCard = cardTemplate.cloneNode(true);
-    const cardText = oneCard.querySelector('.element__sign');
-    cardText.textContent = item.name;
-    const cardPath  =  oneCard.querySelector('.element__image');
-    cardPath.alt = item.name;
-    cardPath.src = item.link;
-// внутри создаваемых карточек нашли элемент лайка + слушатель
-    const buttonHurt = oneCard.querySelector('.element__hurt');
-    buttonHurt.addEventListener('click', function () {
-        buttonHurt.classList.toggle('element__hurt_active');
-    });
-// внутри создаваемых карточек нашли помойку + слушатель
-    const trashButton = oneCard.querySelector('.element__trash');
-        trashButton.addEventListener('click', function( event ) {
-            event.target.closest('.element').remove();
-        })
-// открытие-закртие фулл скрина присвоение значений
-    cardPath.addEventListener('click', (event) => {
-    pictureAssignImageCard.src = item.link;
-    pictureAssignImageCard.alt = item.name;
-    pictureAssignPlaceCard.textContent = item.name;
-    openPopupAll(popupFullscreen);
-});
-    return oneCard;
+  const card = new Card(item, cardTemplate, setNewCard);
+  const newCard = card.createCard();
+  return newCard;
+}
+
+const setNewCard = (cardPath, cardText) => {
+  pictureAssignImageCard.src = cardPath.src;
+  pictureAssignImageCard.alt = cardPath.alt;
+  pictureAssignPlaceCard.textContent = cardText.textContent;
+  openPopupAll(popupFullscreen);
 };
+
 //Слушатель закрытия фулскрина вынесен за границы создания карточек 
 buttonClosePopupImage.addEventListener('click', (event) => {
   closePopup(popupFullscreen);
 });
 
 // Функция перебора массива карточек
-function renderCards(){
-    initialCards.forEach (newItem => {
-        const cardHtml = createCard(newItem);
+    initialCards.forEach ((item) => {
+        const cardHtml = createCard(item);
         moreCard.prepend(cardHtml);
     })
-}
-renderCards();
 
 //отправка формы
 popupFormAdd.addEventListener('submit', function (event) {
     event.preventDefault();
-    const newCard = {
+    const flashData = {
         name: popupInputPlace.value,
         link: popupInputImage.value
     }
-    moreCard.prepend(createCard(newCard));
+    moreCard.prepend(createCard(flashData));
     closePopup(popupAdd)
     popupFormAdd.reset(); 
 });
+
+function validationForm (formElement) {
+  const validForm = new FormValidator (settingsInput, formElement);
+  validForm.enableValidation();
+  return validForm;
+}
+const validationFormProfile = validationForm (popupForm);
+const validationFormAddPlace = validationForm (popupFormAdd);
