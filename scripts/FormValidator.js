@@ -44,6 +44,13 @@
       this._setEventListeners();
   };
 
+  resetValidation() {
+    this.inputList.forEach((inputElement) => {
+      this._hideInputError(inputElement)
+    })
+    this._toggleButtonState()
+  }
+
   _hasInvalidInput () {
     return this.inputList.some((inputElement) => {
       return !inputElement.validity.valid;

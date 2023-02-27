@@ -1,4 +1,4 @@
-//Павел спасибо за ваши комментари, было интересно. Также хочу поздравить вас с праздником и пожелать Вам от всей души, пусть печали и беды обходят стороной.
+//Павел спасибо за ваши комментари, было интересно. 
 
 /*1.Импорт*/
 
@@ -108,13 +108,13 @@ initialCards.forEach ((item) => {
 //отправка формы
 function sendPlaceInfo (event) {
   event.preventDefault();
-  buttonSaveAdd.classList.add(settingsInput.saveButtonInactive);
+  const testValidForm = resetValidationForm(popupFormAdd);
   const flashData = {
     name: popupInputPlace.value,
     link: popupInputImage.value
   }
   sendCard(flashData);
-  closePopup(popupAdd)
+  closePopup(popupAdd);
   popupFormAdd.reset(); 
 };
 
@@ -129,6 +129,11 @@ function validationForm (formElement) {
   return validForm;
 }
 
+function resetValidationForm (formElement) {
+  const popupFormValid = new FormValidator (settingsInput, formElement);
+  popupFormValid.resetValidation();
+  return popupFormValid;
+}
 /*4.Обработчики*/
 
 //открытие попапа
