@@ -63,6 +63,7 @@ const validationFormAddPlace = validationForm (popupFormAdd); //создаем �
 function openPopupAll (popup) {
   popup.classList.add('popup_open');
   document.addEventListener('keydown', closePopupEsc);
+  validationFormAddPlace.resetValidation();
 }
 
 // Функция закрытия попапа через Esc
@@ -108,7 +109,6 @@ initialCards.forEach ((item) => {
 //отправка формы
 function sendPlaceInfo (event) {
   event.preventDefault();
-  const testValidForm = resetValidationForm(popupFormAdd);
   const flashData = {
     name: popupInputPlace.value,
     link: popupInputImage.value
@@ -129,11 +129,6 @@ function validationForm (formElement) {
   return validForm;
 }
 
-function resetValidationForm (formElement) {
-  const popupFormValid = new FormValidator (settingsInput, formElement);
-  popupFormValid.resetValidation();
-  return popupFormValid;
-}
 /*4.Обработчики*/
 
 //открытие попапа
